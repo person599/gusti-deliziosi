@@ -201,34 +201,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Specialità - Container Scroll Animation */}
-      <section className="bg-muted/30 overflow-hidden">
-        <ContainerScroll
-          titleComponent={
-            <>
-              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Non solo gelato</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Le Nostre{" "}
-                <span className="text-primary">Specialità</span>
-              </h2>
-              <div className="w-16 h-1 bg-primary mx-auto mb-6 rounded-full" />
-            </>
-          }
-        >
-          <div className="h-full w-full grid grid-cols-2 gap-4 p-4 md:p-8">
-            {specialities.map((item) => (
-              <div
-                key={item.name}
-                className="bg-background/80 backdrop-blur rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:scale-105 transition-transform"
-              >
-                <span className="text-4xl md:text-5xl mb-3">{item.icon}</span>
-                <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{item.name}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </ContainerScroll>
-      </section>
+
+
 
       {/* Gusti */}
       <section id="gusti" className="py-24 md:py-32 px-4 bg-muted/50">
