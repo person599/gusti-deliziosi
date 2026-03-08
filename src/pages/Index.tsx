@@ -1,12 +1,13 @@
 import {
   ContainerAnimated,
   ContainerInset,
-  ContainerScroll,
+  ContainerScroll as HeroScroll,
   ContainerSticky,
   HeroImage,
   HeroButton,
 } from "@/components/ui/animated-video-on-scroll";
-import { Phone, Mail, MapPin, Clock, IceCreamCone, Leaf, ChevronDown } from "lucide-react";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import { Phone, Mail, MapPin, Clock, IceCreamCone, Leaf, ChevronDown, Star, Facebook, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 
 const classicFlavours = [
@@ -31,6 +32,13 @@ const veganFlavours = [
   "Pistacchio vegano",
 ];
 
+const specialities = [
+  { icon: "🧇", name: "Waffle", desc: "Croccanti e golosi" },
+  { icon: "🥞", name: "Crêpes", desc: "Dolci e salate" },
+  { icon: "☕", name: "Cioccolata Calda", desc: "Cremosa e avvolgente" },
+  { icon: "🍨", name: "Semifreddi Vegani", desc: "Senza latte, tutto gusto" },
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -47,12 +55,20 @@ const Index = () => {
             <a href="#orari" className="text-foreground/70 hover:text-primary transition-colors">Orari</a>
             <a href="#contatti" className="text-foreground/70 hover:text-primary transition-colors">Contatti</a>
           </div>
+          <a
+            href="https://www.facebook.com/IceScream.gelatodaurlo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground/60 hover:text-primary transition-colors"
+          >
+            <Facebook className="w-5 h-5" />
+          </a>
         </div>
       </nav>
 
       {/* Hero Section with Animated Scroll */}
       <section id="home">
-        <ContainerScroll className="h-[200vh]">
+        <HeroScroll className="h-[200vh]">
           <ContainerSticky className="h-screen">
             <ContainerInset roundednessRange={[60, 16]}>
               <HeroImage
@@ -101,7 +117,36 @@ const Index = () => {
               </motion.div>
             </ContainerAnimated>
           </ContainerSticky>
-        </ContainerScroll>
+        </HeroScroll>
+      </section>
+
+      {/* Reviews Badge */}
+      <section className="py-12 px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto"
+        >
+          <div className="bg-card rounded-2xl p-6 md:p-8 shadow-lg border border-border text-center">
+            <div className="flex items-center justify-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 text-accent fill-accent" />
+              ))}
+            </div>
+            <p className="text-3xl font-bold text-foreground mb-1">98%</p>
+            <p className="text-muted-foreground text-sm">valutazioni positive · 67 recensioni</p>
+            <a
+              href="https://www.facebook.com/IceScream.gelatodaurlo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 text-primary hover:underline text-sm font-medium"
+            >
+              <Facebook className="w-4 h-4" />
+              Seguici su Facebook
+            </a>
+          </div>
+        </motion.div>
       </section>
 
       {/* Chi Siamo */}
@@ -129,16 +174,20 @@ const Index = () => {
           >
             <div>
               <p className="text-muted-foreground leading-relaxed text-lg mb-6">
+                <strong className="text-foreground">Tanta passione per le cose buone e naturali.</strong>{" "}
+                Da noi puoi trovare i classici gusti, ma anche sapori nuovi, gelati e semifreddi vegani,
+                waffle, crêpes e cioccolata calda.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-lg mb-6">
                 <strong className="text-foreground">Ice Scream #gelatodaurlo</strong> è una gelateria artigianale
                 situata nel cuore del quartiere Parella a Torino. Siamo conosciuti per i nostri gelati creativi
                 e per un'atmosfera accogliente, apprezzata dai clienti della zona.
               </p>
-              <p className="text-muted-foreground leading-relaxed text-lg mb-6">
-                Ogni gusto nasce dalla selezione delle migliori materie prime, con un occhio di riguardo
-                alle specialità piemontesi e alle esigenze di tutti, incluse opzioni vegane.
-              </p>
-              <p className="text-primary italic text-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <p className="text-primary italic text-lg mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
                 "Il denaro non può dare la felicità ma può comprare un gelato… che è praticamente la stessa cosa!"
+              </p>
+              <p className="text-foreground font-semibold text-lg">
+                Non farti mancare nulla, vieni a trovarci! 🍦
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-xl">
@@ -150,6 +199,35 @@ const Index = () => {
             </div>
           </motion.div>
         </div>
+      </section>
+
+      {/* Specialità - Container Scroll Animation */}
+      <section className="bg-muted/30 overflow-hidden">
+        <ContainerScroll
+          titleComponent={
+            <>
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Non solo gelato</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Le Nostre{" "}
+                <span className="text-primary">Specialità</span>
+              </h2>
+              <div className="w-16 h-1 bg-primary mx-auto mb-6 rounded-full" />
+            </>
+          }
+        >
+          <div className="h-full w-full grid grid-cols-2 gap-4 p-4 md:p-8">
+            {specialities.map((item) => (
+              <div
+                key={item.name}
+                className="bg-background/80 backdrop-blur rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:scale-105 transition-transform"
+              >
+                <span className="text-4xl md:text-5xl mb-3">{item.icon}</span>
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{item.name}</h3>
+                <p className="text-muted-foreground text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </ContainerScroll>
       </section>
 
       {/* Gusti */}
@@ -344,6 +422,40 @@ const Index = () => {
                   </a>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Facebook className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground text-lg mb-1">Facebook</h3>
+                  <a
+                    href="https://www.facebook.com/IceScream.gelatodaurlo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Ice Scream #gelatodaurlo
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <MessageCircle className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground text-lg mb-1">Messenger</h3>
+                  <a
+                    href="https://m.me/IceScream.gelatodaurlo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Scrivici su Messenger
+                  </a>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -375,6 +487,36 @@ const Index = () => {
             Ice Scream 🍦
           </p>
           <p className="text-background/60 text-sm mb-4">#gelatodaurlo</p>
+          <div className="flex items-center justify-center gap-6 mb-6">
+            <a
+              href="https://www.facebook.com/IceScream.gelatodaurlo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-background/50 hover:text-background transition-colors"
+            >
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a
+              href="https://m.me/IceScream.gelatodaurlo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-background/50 hover:text-background transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:sojong11@yahoo.fr"
+              className="text-background/50 hover:text-background transition-colors"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+            <a
+              href="tel:0112638682"
+              className="text-background/50 hover:text-background transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+            </a>
+          </div>
           <p className="text-background/40 text-xs">
             © {new Date().getFullYear()} Ice Scream — Gelateria Artigianale, Torino
           </p>
