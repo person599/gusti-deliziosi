@@ -249,16 +249,32 @@ const Index = () => {
             <Clock className="w-10 h-10 text-primary mx-auto mb-6" />
             <div className="space-y-4 text-lg">
               <div className="flex justify-between items-center py-3 border-b border-border/50">
-                <span className="text-foreground font-medium">Lunedì – Venerdì</span>
-                <span className="text-muted-foreground">12:00 – 22:00</span>
+                <span className="text-foreground font-medium">Domenica</span>
+                <span className="text-muted-foreground">11:00 – 20:30</span>
               </div>
               <div className="flex justify-between items-center py-3 border-b border-border/50">
-                <span className="text-foreground font-medium">Sabato</span>
-                <span className="text-muted-foreground">11:00 – 23:00</span>
+                <span className="text-foreground font-medium">Lunedì</span>
+                <span className="text-muted-foreground">15:00 – 20:30</span>
+              </div>
+              <div className="flex justify-between items-center py-3 border-b border-border/50">
+                <span className="text-foreground font-medium">Martedì</span>
+                <span className="text-muted-foreground">15:00 – 20:30</span>
+              </div>
+              <div className="flex justify-between items-center py-3 border-b border-border/50">
+                <span className="text-foreground font-medium">Mercoledì</span>
+                <span className="text-muted-foreground">15:00 – 20:30</span>
+              </div>
+              <div className="flex justify-between items-center py-3 border-b border-border/50">
+                <span className="text-foreground font-medium">Giovedì</span>
+                <span className="text-muted-foreground">15:00 – 20:30</span>
+              </div>
+              <div className="flex justify-between items-center py-3 border-b border-border/50">
+                <span className="text-foreground font-medium">Venerdì</span>
+                <span className="text-muted-foreground">15:00 – 20:30</span>
               </div>
               <div className="flex justify-between items-center py-3">
-                <span className="text-foreground font-medium">Domenica</span>
-                <span className="text-muted-foreground">11:00 – 22:00</span>
+                <span className="text-foreground font-medium">Sabato</span>
+                <span className="text-muted-foreground">15:00 – 20:30</span>
               </div>
             </div>
             <p className="text-muted-foreground text-sm mt-6 italic">
